@@ -1,23 +1,18 @@
-function ohCrap(string){
-    try{
-        console.error(string);
-    }catch(err){
-        console.error("[Error] " + err);
+"use strict";
+var curry = function (fn) {
+    var fargs = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        fargs[_i - 1] = arguments[_i];
     }
-}
-
-function ohDear(string){
-    try{
-        console.warn(string);
-    }catch(err){
-        console.warn("[Warn] " + err);
-    }
-}
-
-function meh(string){
-    try{
-        console.log(string);
-    }catch(err){
-        console.log("[Log] " + err);
-    }
-}
+    return function () {
+        var gargs = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            gargs[_i] = arguments[_i];
+        }
+        return fn.apply(void 0, fargs.concat(gargs));
+    };
+};
+var logger = function (level, obj) { return console[level](obj); };
+var ohCrap = curry(logger, 'error');
+var ohDear = curry(logger, 'warn');
+var meh = curry(logger, 'log');
