@@ -21,3 +21,7 @@ var log = "Log Text";
 
 meh(log);
 ~~~
+
+## Contributors Needed
+
+For future releases we'd love to add locale support so any translators would be great!
