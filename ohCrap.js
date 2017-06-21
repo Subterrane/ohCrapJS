@@ -1,3 +1,7 @@
 function ohCrap(string){
-    console.error(string);
+    try{
+        console.error(string);
+    }catch(err){
+        console.error("[Error]" + err);
+    }
 }
